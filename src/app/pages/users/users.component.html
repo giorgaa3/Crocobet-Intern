@@ -1,0 +1,28 @@
+<div class="users-wrapper">
+  <h2>მომხმარებელთა სია</h2>
+  <div class="search-bar">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="მოძებნე..."
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="onSearch()"
+    />
+    <button
+      class="search-button"
+      (click)="onSearch()"
+      title="ძებნა"
+      aria-label="ძებნა"
+    >
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+
+  @for (user of filteredUsers; track user.id) {
+    <div class="user-card">
+      <app-user [user]="user"></app-user>
+    </div>
+  }
+</div>
+
+

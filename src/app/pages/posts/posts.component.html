@@ -1,0 +1,27 @@
+<div class="posts-wrapper">
+  <h2>პოსტების სია</h2>
+
+  <div class="posts">
+    @for (post of posts(); track post.id) {
+      <div class="post-card">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.body | slice : 0 : 100 }}...</p>
+        <button (click)="openDetails(post)">დეტალურად</button>
+      </div>
+    } @empty {
+      <p>პოსტები არ მოიძებნა.</p>
+    }
+  </div>
+</div>
+
+@if (selectedPost()) {
+  <div class="modal" (click)="closeDetails()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close-btn" (click)="closeDetails()">&times;</span>
+      <h3>{{ selectedPost()!.title }}</h3>
+      <p>{{ selectedPost()!.body }}</p>
+      <button (click)="closeDetails()">დახურვა</button>
+    </div>
+  </div>
+}
+

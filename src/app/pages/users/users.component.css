@@ -1,0 +1,253 @@
+html,
+body {
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f1117;
+  color: #f3f4f6;
+  overflow-x: hidden;
+  background: radial-gradient(
+      circle at top left,
+      rgba(127, 90, 240, 0.3),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(255, 0, 200, 0.3),
+      transparent 60%
+    ),
+    linear-gradient(135deg, #0f1117 0%, #060818 100%);
+}
+
+/* Layout სტრუქტურა */
+.layout {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  overflow: hidden;
+  min-width: 100vw;
+  background-color: transparent;
+}
+
+/* დეკორატიული ფონური ელემენტები */
+.layout::before,
+.layout::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle at center,
+    rgba(127, 90, 240, 0.35) 0%,
+    transparent 70%
+  );
+  filter: blur(120px);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: blobMove 25s infinite alternate ease-in-out;
+}
+
+.layout::before {
+  top: -150px;
+  left: -150px;
+}
+
+.layout::after {
+  bottom: -150px;
+  right: -150px;
+}
+
+@keyframes blobMove {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, -20px) scale(1.1);
+  }
+  100% {
+    transform: translate(-30px, 30px) scale(0.95);
+  }
+}
+
+/* Sidebar */
+app-sidebar {
+  width: 240px;
+  background-color: #101928;
+  color: white;
+  padding: 20px 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+app-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+app-sidebar li {
+  padding: 12px 24px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #cbd5e1;
+}
+
+app-sidebar li::before {
+  content: "\f007";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #60a5fa;
+  font-size: 18px;
+}
+
+/* Header */
+app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #1a2238;
+  color: whitesmoke;
+  padding: 16px 32px;
+  font-weight: bold;
+  font-size: 22px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  height: 70px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 100px 32px 40px 32px;
+  background: rgba(15, 17, 23, 0.85);
+  max-width: 1024px;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 8px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width: 1024px) {
+  .main-content {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  app-sidebar {
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .main-content {
+    padding: 80px 20px;
+  }
+}
+
+/* Users Section */
+.users-wrapper {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.users-wrapper h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #93c5fd;
+  text-align: center;
+}
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto 24px;
+  border-radius: 999px;
+  overflow: hidden;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  color: #f1f5f9;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-button {
+  padding: 10px 16px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #f1f5f9;
+  transition: background 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-button i {
+  font-size: 16px;
+}
+
+.user-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #f3f4f6;
+  position: relative;
+  padding-top: 48px;
+}
+
+.user-card::before {
+  content: "\f007";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  font-size: 24px;
+  color: #3b82f6;
+}
+
+.user-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+}

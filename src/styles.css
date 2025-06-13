@@ -1,0 +1,142 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  background: #161748;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #374151;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #4b5563;
+}
+
+.container {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 80%;
+    padding: 10px;
+  }
+}
+
+h1,
+h2,
+h3 {
+  color: #091c2d;
+}
+
+button {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button.post-btn {
+  background-color: #0984e3;
+  color: white;
+}
+
+button.todo-btn {
+  background-color: #00b894;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.user-card {
+  background: linear-gradient(145deg, #ffffff, #f1f1f1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin: 15px 0;
+  padding: 20px;
+  transition: transform 0.2s ease;
+}
+
+.user-card:hover {
+  transform: scale(1.01);
+}
+
+.search-container input {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px 14px;
+  margin: 20px auto;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  display: block;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  background-color: #091c2d;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar {
+  background-color: #0a2238;
+  color: white;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.sidebar a {
+  color: white;
+  display: block;
+  margin-bottom: 12px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sidebar a:hover {
+  color: #00b894;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.todo-item {
+  padding: 10px 15px;
+  background-color: #dfe6e9;
+  border-left: 5px solid #00b894;
+  border-radius: 6px;
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+.todo-item.completed {
+  background-color: #d0f8e4;
+  font-weight: bold;
+}

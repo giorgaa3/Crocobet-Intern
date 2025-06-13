@@ -1,0 +1,10 @@
+<div class="todos-container">
+  <h2>დავალებების ჩამონათვალი</h2>
+  @for (todo of todos(); track todo.id) {
+  <div class="todo-card" [class.completed]="todo.completed">
+    {{ todo.title }}
+  </div>
+  } @empty {
+  <p>ამ მომხმარებელს დავალებები არ აქვს.</p>
+  }
+</div>
