@@ -21,9 +21,10 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     // მონაცემების წამოღება და signal-ის განახლება
     this.dataService.getPosts().subscribe((allPosts) => {
-      const userId = this.route.snapshot.paramMap.get('id');
+      const userId = this.route.snapshot.queryParamMap.get('id');
+
       const filteredPosts = userId
-        ? allPosts.filter((post) => post.id === +userId)
+        ? allPosts.filter((post) => post.userId === +userId)
         : allPosts;
 
       this.posts.set(filteredPosts);

@@ -18,16 +18,16 @@ export class TodosComponent implements OnInit {
   private route = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    const userId = this.route.snapshot.paramMap.get('id');
+    const userId = this.route.snapshot.queryParamMap.get('id');
 
     this.dataService.getTodos().subscribe((allTodos) => {
       let filteredTodos: ITodo[];
 
-      if (userId) {
-        filteredTodos = allTodos.filter((todo) => todo.id === +userId);
-      } else {
-        filteredTodos = allTodos;
-      }
+        if (userId) {
+          filteredTodos = allTodos.filter((todo) => todo.userId === +userId);
+        } else {
+          filteredTodos = allTodos;
+        }
 
       this.todos.set(filteredTodos);
     });
